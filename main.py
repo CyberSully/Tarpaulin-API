@@ -6,8 +6,7 @@ import io
 import jwt
 from dotenv import load_dotenv
 import os
-from dotenv import load_dotenv
-import os
+
 
 load_dotenv()
 
@@ -22,7 +21,6 @@ PHOTO_BUCKET='tarpaulin-bucket-brett'
 app = Flask(__name__)
 
 # API programmed by Brett Sullivan 6-5-2025, Oregon State University, Sullbret@oregonstate.edu 
-# Password for all users - password$$123
 
 
 datastore_client = gcloud_datastore.Client()
