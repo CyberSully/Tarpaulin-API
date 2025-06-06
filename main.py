@@ -2,23 +2,28 @@ from flask import Flask, request, send_file, jsonify
 import requests
 from google.cloud import storage
 from google.cloud import datastore as gcloud_datastore
-
 import io
 import jwt
+from dotenv import load_dotenv
+import os
+from dotenv import load_dotenv
+import os
 
-# API programmed by Brett Sullivan 6-5-2025, Oregon State University, Sullbret@oregonstate.edu 
+load_dotenv()
+
+AUTH0_CLIENT_ID = os.getenv("AUTH0_CLIENT_ID")
+AUTH0_CLIENT_SECRET = os.getenv("AUTH0_CLIENT_SECRET")
+AUTH0_DOMAIN = os.getenv("AUTH0_DOMAIN")
+AUTH0_AUDIENCE = os.getenv("AUTH0_AUDIENCE")
 
 PHOTO_BUCKET='tarpaulin-bucket-brett'
 
 
 app = Flask(__name__)
 
+# API programmed by Brett Sullivan 6-5-2025, Oregon State University, Sullbret@oregonstate.edu 
 # Password for all users - password$$123
 
-AUTH0_DOMAIN = "dev-x2ktm34zp3dve6kb.us.auth0.com"
-AUTH0_CLIENT_ID = "SaUp76pCXxtdkaIc7Q8MUomc3MvqvoRf"
-AUTH0_CLIENT_SECRET = "PhFxe62o3vMohlJVtV0ZQ5V-Xt9kEdWUi8ktXo6bMHwXDKyEe0r_6YoXWkTRZIcM"
-AUTH0_AUDIENCE = "https://tarpaulin.api"
 
 datastore_client = gcloud_datastore.Client()
 
